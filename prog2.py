@@ -6,6 +6,7 @@ target = np.array(data)[:, -1]
 
 
 def learn(concepts, target):
+    #initialize Specific and General Hypothesis
     specific_h = concepts[0].copy()
     general_h = [["?" for i in range(len(specific_h))]
                  for i in range(len(specific_h))]
@@ -27,6 +28,7 @@ def learn(concepts, target):
         print("Specific: " + str(specific_h))
         print("General: " + str(general_h) + "\n")
         
+    #Trimming general_h by Removing completely generalized list
     general_h=[general_h[i] for i, h in enumerate(general_h) if h!= ['?' for x in range(len(specific_h))]]
     return specific_h,general_h
 
